@@ -32,7 +32,7 @@ FROM ubuntu:latest
 LABEL "project"="Marketing"
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt update && apt install apache2 git wget -y
+RUN apt update && apt install apache2 git wget curl -y
 COPY --from=BUILD_IMAGE /root/tween.tgz /var/www/html/
 RUN cd /var/www/html/ && tar xzf tween.tgz
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
